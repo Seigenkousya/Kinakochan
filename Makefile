@@ -1,8 +1,13 @@
-CC:=g++
-CFLAGS:= -g -O0
+Cxx:=g++
+CPPFLAGS:=-g -O0
 
-Brainwash:
+Brainwash: Brainwash.cpp
+	$(Cxx) $(CPPFLAGS) Brainwash.cpp -o Brainwash
 
 clean:
-	$(RM) Brainwash
+	rm -f *.o Brainwash
 
+test: Brainwash
+	./Brainwash example.bf
+
+.PHONY: test clean
