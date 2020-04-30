@@ -10,6 +10,8 @@
 
 #define MEMORY_SIZE 10000
 
+int x;
+int y;
 int row;
 int column;
 uint8_t *head;
@@ -18,17 +20,73 @@ void within_range(uint8_t *now){
 	if(now-head<0 || now>head+MEMORY_SIZE){
 		std::cerr << "now:" << now << " head:" << head << std::endl;
 		std::cerr << "now-head:" << (int)(now-head) << std::endl;
-		std::cerr << "point out of range." << std::endl; std::exit(1); } }
+		std::cerr << "point out of range." << std::endl; std::exit(1); }
+}
+
+void create_flame(){
+	int i;
+
+	printf("\033[%d;%dH",++x,y);
+	printf("#");
+	for(i=1;i<column-30;i++)
+		printf("=");
+
+	printf("#\n");
+
+}
+	
+bool is_token(char c){
+	int i;
+	char tokens[]="><+-,.[]";
+	for(i=0;i<8;i++){
+		if(tokens[i]==c) return true;
+	}
+	return false;
+}
+
+void display_code(std::string code,int now,char *output){
+	int index=0;
+	bool flag=false;
+
+	//show source
+	create_flame();
+	printf("\033[%d;%dH",++x,y+2);
+	while(index<code.size()){
+		if(is_token(code[index])){
+			if(index==now){
+				printf("\033[47m");
+				printf("%c",code[index]);
+				printf("\033[49m");
+			}else{
+				printf("%c",code[index]);
+			}
+
+			if((index+1)%(column-30)==0){
+				printf("\n");
+				printf("\033[%d;%dH",++x,y+2);
+			}
+		}
+		index++;
+
+	}
+	create_flame();
+	
+	//show output
+	printf("\033[%d;%dH",++x,y);
+	printf("output:%s",output);
+
+}
 
 void display_array(uint8_t *memory,char *output){
 	int i;
-	int x=2;
-	int y=2;
 	int address=memory-head;
 	int box_num=(column-4)/5;
 	uint8_t *pointer;
 	uint8_t *pointer_start;
 	static int index_start=0;
+
+	x=2;
+	y=2;
 
 	//printf("\033[2J");
 	std::system("clear");
@@ -39,33 +97,32 @@ void display_array(uint8_t *memory,char *output){
 		index_start--;
 	}
 
-	printf("\033[%d;%dH",x,y);
+	//show memory
+	printf("\033[%d;%dH",x,y+2);
 	for(i=index_start;i<(index_start+box_num);i++){
 		printf("+%3d",i);
 	}
 	printf("+\n");
 	
-	printf("\033[%d;%dH",++x,y);
+	printf("\033[%d;%dH",++x,y+2);
 	pointer_start=head+sizeof(uint8_t*)*index_start;
 	for(pointer=pointer_start; pointer<(pointer_start+box_num); pointer++){
 		printf("|%3d",*(pointer));
 	}
 	printf("|\n");
 	
-	printf("\033[%d;%dH",++x,y);
+	printf("\033[%d;%dH",++x,y+2);
 	for(i=0;i<box_num;i++){
 		printf("+---");
 	}
 	printf("+\n");
 	
-	printf("\033[%d;%dH",++x,y);
+	//show pointer
+	printf("\033[%d;%dH",++x,y+2);
 	for(i=0;i<address-index_start;i++){
 		printf("    ");
 	}
 	printf("  ^\n");
-	
-	printf("\033[%d;%dH",++x,y);
-	printf("output:%s",output);
 }
 
 void processor(std::string code){
@@ -84,6 +141,8 @@ void processor(std::string code){
 
 	while(index<size){
 		display_array(memory,output);
+		display_code(code,index,output);
+
 		switch(code[index]){
 			case '>':
 				within_range(++memory);
@@ -114,6 +173,9 @@ void processor(std::string code){
 				if(*memory!=0)
 					while(code[index]!='[') index--;
 				break;
+			default:
+				index++;
+				continue;
 		}
 		index++;
 		usleep(ms);
