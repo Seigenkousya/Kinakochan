@@ -63,7 +63,7 @@ void display_code(std::string code,int now,char *output){
 				printf("%c",code[index]);
 			}
 
-			if((index+1)%(column-30)==0){
+			if((index+1)%(column-33)==0){
 				printf("\n");
 				printf("\033[%d;%dH",++x,y+2);
 			}
