@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -13,8 +14,10 @@
 int x;
 int y;
 int row;
+int ms=20;
 int column;
 uint8_t *head;
+bool no_visualize=false;
 
 void within_range(uint8_t *now){
 	if(now-head<0 || now>head+MEMORY_SIZE){
@@ -129,7 +132,6 @@ void display_array(uint8_t *memory,char *output){
 
 void processor(std::string code){
 	char output[100000];
-	int ms=20;
 	int index=0;
 	int len_out=0;
 	int size=code.size();
@@ -142,8 +144,11 @@ void processor(std::string code){
 	head=memory;
 
 	while(index<size){
-		display_array(memory,output);
-		display_code(code,index,output);
+		//visualize
+		if(!no_visualize){
+			display_array(memory,output);
+			display_code(code,index,output);
+		}
 
 		switch(code[index]){
 			case '>':
@@ -180,27 +185,56 @@ void processor(std::string code){
 				continue;
 		}
 		index++;
-		usleep(ms);
+
+		if(!no_visualize)
+			usleep(ms);
 	}
 }
 
 int main(int argc,char *argv[]){
-	if(argc!=2){
+	char *filename;
+	if(argc==3){
+		filename=argv[2];
+		if(strcmp(argv[1],"--no-visualize")==0 || strcmp(argv[1],"-n")==0){
+			no_visualize=true;
+		}else if(strncmp(argv[1],"--speed=",8)==0 || strncmp(argv[1],"-s=",3)==0){
+			char *str=argv[1];
+			while(*(str++)!='=');
+			ms=strtol(str,&str,10);
+		}else{
+			std::cerr << "Invalid argument." << std::endl;
+			std::cerr << "Usage:./Brainwash -(h|n|s) terget_file" << std::endl;
+			std::cerr << "	--help(-h) :show this help" << std::endl;
+			std::cerr << "	--no-visualize(-n) :only print result" << std::endl;
+			std::cerr << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
+			exit(1);
+		}
+	}else if(argc==2){
+		if(strcmp(argv[1],"--help")==0 || strcmp(argv[1],"-h")==0){
+			printf("Brainwash -Brainfuck interpreter and visualizer- \n");
+			printf("Usage:./Brainwash -(h|n|s) terget_file \n");
+			printf("	--help(-h) :show this help\n");
+			printf("	--no-visualize(-n) :only print result\n");
+			printf("	--speed=(-s=) :run speed[ms]\n\n");
+			printf("Auter:Takana Norimasa \n");
+			printf("Repository:https://github.com/Takana-Norimasa/Brainwash \n");
+			return 0;
+		}
+		filename=argv[1];
+	}else{
 		std::cerr << "argument error." << std::endl;
 		std::cerr << "usage: ./Brainwash brainfuck_script" << std::endl;
+		exit(1);
 	}
 
 	struct winsize size;
 	ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
 
-	std::cout << "row:" << size.ws_row << std::endl;
-	std::cout << "column:" << size.ws_col << std::endl;
-	
 	row=size.ws_row;
 	column=size.ws_col;
 
 	std::ifstream file;
-	file.open(argv[1]);
+	file.open(filename);
 
 	if(!file){
 		std::cerr << "failed to open file." << std::endl;
@@ -213,5 +247,5 @@ int main(int argc,char *argv[]){
 
 	processor(str);
 
-	std::cout << std::flush;
+	std::cout << std::endl;
 }
