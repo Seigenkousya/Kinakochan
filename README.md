@@ -9,10 +9,10 @@ $ make install
 ```
 
 # usage
-Usage:./Brainwash -(h|n|s) terget_file  
-	--help(-h) :show help  
-	--no-visualize(-n) :only print result  
-	--speed=(-s=) :demo speed[ms]  
+Usage: ./Brainwash -(h|n|s) terget_file  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--help(-h) :show help  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--no-visualize(-n) :only print result  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--speed=(-s=) :demo speed[ms]  
 
 # Auter
 Takana Norimasa  
