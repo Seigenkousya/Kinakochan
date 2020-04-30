@@ -49,6 +49,8 @@ void display_code(std::string code,int now,char *output){
 	bool flag=false;
 
 	//show source
+	printf("\033[%d;%dH",++x,y);
+	printf("code\n");
 	create_flame();
 	printf("\033[%d;%dH",++x,y+2);
 	while(index<code.size()){
@@ -73,7 +75,8 @@ void display_code(std::string code,int now,char *output){
 	
 	//show output
 	printf("\033[%d;%dH",++x,y);
-	printf("output:%s",output);
+	printf("\033[%d;%dH",++x,y);
+	printf("output:%s\n",output);
 
 }
 
@@ -88,12 +91,11 @@ void display_array(uint8_t *memory,char *output){
 	x=2;
 	y=2;
 
-	//printf("\033[2J");
 	std::system("clear");
 
 	if(address==(index_start+box_num-1)){
 		index_start++;
-	}else if(address==index_start){
+	}else if(address==index_start && address!=0){
 		index_start--;
 	}
 
@@ -127,7 +129,7 @@ void display_array(uint8_t *memory,char *output){
 
 void processor(std::string code){
 	char output[100000];
-	int ms=50;
+	int ms=20;
 	int index=0;
 	int len_out=0;
 	int size=code.size();
