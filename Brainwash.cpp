@@ -35,7 +35,6 @@ void create_flame(){
 		printf("=");
 
 	printf("#\n");
-
 }
 	
 bool is_token(char c){
