@@ -1,11 +1,12 @@
 # Kinakochan
-![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 Kinakochan is a programming language that can be programmed like momone chan.
+![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
 # install
 Kinakochan needs a gnu g++.
 
 ```terminal
+$ git clone https://github.com/Seigenkousya/Kinakochan.git
 $ make install
 ```
 
@@ -25,6 +26,21 @@ Kinakochan show only result.
 $ ./Kinakochan -s=100 terget_file
 ```
 Kinakochan stepping every 100ms.
+
+
+# Language specifications
+Kinakochan is a multibyte programming language.
+
+|Kinakochan|brainfuck|C language|
+|-------|-------|-------|
+|黄奈子ちゃん黄奈子ちゃん|+|(\*ptr)++;|
+|黄奈子ちゃん黃奈子ちゃん|-|(\*ptr)--;|
+|黃奈子ちゃん黄奈子ちゃん|>|ptr++;|
+|黃奈子ちゃん黃奈子ちゃん|<|ptr--;|
+|黄奈子ちゃん!|.|putchar(\*ptr);|
+|黃奈子ちゃん!|,|\*ptr=getchar();|
+|黄奈子ちゃん |[|while(\*ptr){|
+|黃奈子ちゃん |]|}|
 
 
 # Author
