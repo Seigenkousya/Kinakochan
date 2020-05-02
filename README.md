@@ -30,8 +30,10 @@ kinako-chan stepping every 100ms.
 
 
 # Language specifications
-kinako-chan is a multibyte programming language.  
-It have eight tokens like brainfuck.  
+kinako-chan is a multibyte programming language.    
+It consists of only eight simple token like brainfuck and an instruction pointer.  
+  
+_kinako-chan is fully Turing complete._  
 
 |kinako-chan|brainfuck|C language|
 |-------|-------|-------|
@@ -44,6 +46,8 @@ It have eight tokens like brainfuck.
 |黄奈子ちゃん&nbsp;(<-have a space at end)|[|while(\*ptr){|
 |黃奈子ちゃん&nbsp;(<-have a space at end)|]|}|
 
+kinako-chan is a sequence of these commands, possibly interspersed with other characters (which are ignored).  
+The commands are executed sequentially, with some exceptions: an instruction pointer begins at the first command, and each command it points to is executed, after which it normally moves forward to the next command. The program terminates when the instruction pointer moves past the last command.   
 
 # Author
 正弦工社 S.I.N  

@@ -206,7 +206,7 @@ int main(int argc,char *argv[]){
 			ms=strtol(str,&str,10);
 		}else{
 			std::cerr << "Invalid argument." << std::endl;
-			std::cerr << "Usage:./Kinakochan -(h|n|s) terget_file" << std::endl;
+			std::cerr << "Usage:./kinako-chan -(h|n|s) terget_file" << std::endl;
 			std::cerr << "	--help(-h) :show this help" << std::endl;
 			std::cerr << "	--no-visualize(-n) :only print result" << std::endl;
 			std::cerr << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
@@ -214,19 +214,19 @@ int main(int argc,char *argv[]){
 		}
 	}else if(argc==2){
 		if(strcmp(argv[1],"--help")==0 || strcmp(argv[1],"-h")==0){
-			printf("Kinakochan -Brainfuck interpreter and visualizer- \n");
-			printf("Usage:./Kinakochan -(h|n|s) terget_file \n");
+			printf("kinako-chan -Brainfuck interpreter and visualizer- \n");
+			printf("Usage:./kinako-chan -(h|n|s) terget_file \n");
 			printf("	--help(-h) :show this help\n");
 			printf("	--no-visualize(-n) :only print result\n");
 			printf("	--speed=(-s=) :run speed[ms]\n\n");
 			printf("Auter:Takana Norimasa \n");
-			printf("Repository:https://github.com/Takana-Norimasa/Kinakochan \n");
+			printf("Repository:https://github.com/Takana-Norimasa/kinako-chan \n");
 			return 0;
 		}
 		filename=argv[1];
 	}else{
 		std::cerr << "argument error." << std::endl;
-		std::cerr << "usage: ./Kinakochan brainfuck_script" << std::endl;
+		std::cerr << "usage: ./kinako-chan brainfuck_script" << std::endl;
 		exit(1);
 	}
 
