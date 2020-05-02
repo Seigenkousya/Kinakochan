@@ -26,12 +26,13 @@ $ ./Kinakochan -s=100 terget_file
 Kinakochan stepping every 100ms.
 
 
-# Auther
-正弦工社 S.I.N
-Twitter:[Seigenkousya](https://twitter.com/Seigenkousya)  
-homepage:[https://seigenkousya.github.io/](https://seigenkousya.github.io/)
+# Author
+正弦工社 S.I.N  
+Twitter:[@Seigenkousya](https://twitter.com/Seigenkousya)    
+homepage:[https://seigenkousya.github.io/](https://seigenkousya.github.io/)  
 
 ## maintainer
 Takana Norimasa  
-Twitter:[lIlIIllIIIlIlIl](https://twitter.com/lIlIIllIIIlIlIl)  
+Twitter:[@lIlIIllIIIlIlIl](https://twitter.com/lIlIIllIIIlIlIl)  
+homepage:[https://takana-norimasa.github.io/blog/](https://takana-norimasa.github.io/blog/)  
 
