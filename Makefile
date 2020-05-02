@@ -1,16 +1,16 @@
 Cxx:=g++
 CPPFLAGS:=-g -O0
 
-Brainwash: Brainwash.cpp
-	$(Cxx) $(CPPFLAGS) Brainwash.cpp -o Brainwash
+Kinakochan: Kinakochan.cpp
+	$(Cxx) $(CPPFLAGS) Kinakochan.cpp -o Kinakochan
 
 install:
-	$(Cxx) -O2  Brainwash.cpp -o Brainwash
+	$(Cxx) -O2  Kinakochan.cpp -o Kinakochan
 
 clean:
-	rm -f *.o Brainwash
+	rm -f *.o Kinakochan
 
-test: Brainwash
-	./Brainwash example.bf
+test: Kinakochan
+	./Kinakochan example.bf
 
 .PHONY: test clean install
