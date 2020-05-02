@@ -1,5 +1,6 @@
 # Kinakochan
-Kinakochan is a programming language that can be programmed like momone.
+![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
+Kinakochan is a programming language that can be programmed like momone chan.
 
 # install
 Kinakochan needs a gnu g++.
