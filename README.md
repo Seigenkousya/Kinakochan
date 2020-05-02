@@ -1,4 +1,4 @@
-# Kinakochan
+# Kinakochan [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Kinakochan is a programming language that can be programmed like momone chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
@@ -7,6 +7,7 @@ Kinakochan needs a gnu g++.
 
 ```terminal
 $ git clone https://github.com/Seigenkousya/Kinakochan.git
+$ cd Kinakochan
 $ make install
 ```
 

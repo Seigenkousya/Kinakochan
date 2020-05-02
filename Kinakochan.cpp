@@ -23,7 +23,9 @@ void within_range(uint8_t *now){
 	if(now-head<0 || now>head+MEMORY_SIZE){
 		std::cerr << "now:" << now << " head:" << head << std::endl;
 		std::cerr << "now-head:" << (int)(now-head) << std::endl;
-		std::cerr << "point out of range." << std::endl; std::exit(1); }
+		std::cerr << "point out of range." << std::endl;
+		std::exit(1);
+	}
 }
 
 void create_flame(){
@@ -46,7 +48,7 @@ bool is_token(char c){
 	return false;
 }
 
-void display_code(std::string code,int now,char *output){
+void display_code(std::wstring code,int now,char *output){
 	int index=0;
 	bool flag=false;
 
@@ -129,7 +131,7 @@ void display_array(uint8_t *memory,char *output){
 	printf("  ^\n");
 }
 
-void processor(std::string code){
+void processor(std::wstring code){
 	char output[100000];
 	int index=0;
 	int len_out=0;
@@ -192,6 +194,8 @@ void processor(std::string code){
 
 int main(int argc,char *argv[]){
 	char *filename;
+	std::locale::global(std::locale(""));
+	
 	if(argc==3){
 		filename=argv[2];
 		if(strcmp(argv[1],"--no-visualize")==0 || strcmp(argv[1],"-n")==0){
@@ -232,19 +236,20 @@ int main(int argc,char *argv[]){
 	row=size.ws_row;
 	column=size.ws_col;
 
-	std::ifstream file;
-	file.open(filename);
+
+	std::wifstream file(filename);
 
 	if(!file){
 		std::cerr << "failed to open file." << std::endl;
 		std::exit(1);
 	}
 
-	std::stringstream strStream;
-	strStream << file.rdbuf();
-	std::string str=strStream.str();
+	std::wstringstream wss;
+	wss << file.rdbuf();
+	std::wstring str=wss.str();
 
-	processor(str);
+	std::string bf=knk2bf();
+	//processor(bf,str);
 
 	std::cout << std::endl;
 }
