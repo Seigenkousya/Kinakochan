@@ -48,7 +48,7 @@ bool is_token(char c){
 	return false;
 }
 
-void display_code(std::wstring code,int now,char *output){
+void display_bf(std::string code,int now,char *output){
 	int index=0;
 	bool flag=false;
 
@@ -131,11 +131,11 @@ void display_array(uint8_t *memory,char *output){
 	printf("  ^\n");
 }
 
-void processor(std::wstring code){
+void processor(std::string bf,std::wstring knk){
 	char output[100000];
 	int index=0;
 	int len_out=0;
-	int size=code.size();
+	int size=bf.size();
 	char c;
 	uint8_t *memory;
 
@@ -148,10 +148,10 @@ void processor(std::wstring code){
 		//visualize
 		if(!no_visualize){
 			display_array(memory,output);
-			display_code(code,index,output);
+			display_bf(bf,index,output);
 		}
 
-		switch(code[index]){
+		switch(bf[index]){
 			case '>':
 				within_range(++memory);
 				break;
@@ -175,11 +175,11 @@ void processor(std::wstring code){
 				break;
 			case '[':
 				if(*memory==0)
-					while(code[index]!=']') index++;
+					while(bf[index]!=']') index++;
 				break;
 			case ']':
 				if(*memory!=0)
-					while(code[index]!='[') index--;
+					while(bf[index]!='[') index--;
 				break;
 			default:
 				index++;
@@ -246,10 +246,10 @@ int main(int argc,char *argv[]){
 
 	std::wstringstream wss;
 	wss << file.rdbuf();
-	std::wstring str=wss.str();
+	std::wstring source=wss.str();
 
-	std::string bf=knk2bf();
-	//processor(bf,str);
+	//std::string bf=knk2bf(source);
+	//processor(bf,source);
 
 	std::cout << std::endl;
 }

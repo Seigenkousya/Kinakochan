@@ -1,16 +1,16 @@
 Cxx:=g++
 CPPFLAGS:=-g -O0
 
-Kinakochan: Kinakochan.cpp
-	$(Cxx) $(CPPFLAGS) Kinakochan.cpp -o Kinakochan
+kinako-chan: kinako-chan.cpp
+	$(Cxx) $(CPPFLAGS) kinako-chan.cpp -o kinako-chan
 
 install:
-	$(Cxx) -O2  Kinakochan.cpp -o Kinakochan
+	$(Cxx) -O2  kinako-chan.cpp -o kinako-chan
 
 clean:
-	rm -f *.o Kinakochan
+	rm -f *.o kinako-chan
 
-test: Kinakochan
-	./Kinakochan example.bf
+test: kinako-chan
+	./kinako-chan example.bf
 
 .PHONY: test clean install
