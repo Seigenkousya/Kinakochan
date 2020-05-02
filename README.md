@@ -35,16 +35,16 @@ It consists of only eight simple token like brainfuck and an instruction pointer
   
 _kinako-chan is fully Turing complete._  
 
-|kinako-chan|brainfuck|C language|
-|-------|-------|-------|
-|黄奈子ちゃん黄奈子ちゃん|+|(\*ptr)++;|
-|黄奈子ちゃん黃奈子ちゃん|-|(\*ptr)--;|
-|黃奈子ちゃん黄奈子ちゃん|>|ptr++;|
-|黃奈子ちゃん黃奈子ちゃん|<|ptr--;|
-|黄奈子ちゃん!|.|putchar(\*ptr);|
-|黃奈子ちゃん!|,|\*ptr=getchar();|
-|黄奈子ちゃん&nbsp;(<-have a space at end)|[|while(\*ptr){|
-|黃奈子ちゃん&nbsp;(<-have a space at end)|]|}|
+|kinako-chan|Meaning|brainfuck|C language|
+|-------|-------|------|-------|
+|黄奈子ちゃん黄奈子ちゃん|increment the data pointer|+|(\*ptr)++;|
+|黄奈子ちゃん黃奈子ちゃん|decrement the data pointer|-|(\*ptr)--;|
+|黃奈子ちゃん黄奈子ちゃん|increment the byte at the data pointer|>|ptr++;|
+|黃奈子ちゃん黃奈子ちゃん|decrement the byte at the data pointer|<|ptr--;|
+|黄奈子ちゃん!|output the byte at the data pointer|.|putchar(\*ptr);|
+|黃奈子ちゃん!|accept one byte of input,,|\*ptr=getchar();|
+|黄奈子ちゃん&nbsp;(<-have a space at end)|if the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching ] command. |[|while(\*ptr){|
+|黃奈子ちゃん&nbsp;(<-have a space at end)|if the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching [ command. |]|}|
 
 kinako-chan is a sequence of these commands, possibly interspersed with other characters (which are ignored).  
 The commands are executed sequentially, with some exceptions: an instruction pointer begins at the first command, and each command it points to is executed, after which it normally moves forward to the next command. The program terminates when the instruction pointer moves past the last command.   
