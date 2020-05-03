@@ -243,7 +243,6 @@ int main(int argc,char *argv[]){
 	row=size.ws_row;
 	column=size.ws_col;
 
-
 	std::wifstream file(filename);
 
 	if(!file){
