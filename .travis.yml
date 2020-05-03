@@ -6,4 +6,5 @@ compiler:
 
 script:
   - g++ --version
-  - make test CXX=${CXX}
+  - clang++ --version
+  - make test
