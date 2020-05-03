@@ -1,6 +1,6 @@
-#include <cstdio>
-#include <cstring>
 #include <cstdlib>
+#include <cstring>
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -31,12 +31,12 @@ void within_range(uint8_t *now){
 void create_flame(){
 	int i;
 
-	printf("\033[%d;%dH",++x,y);
-	printf("#");
+	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
+	std::cout << "#";
 	for(i=1;i<column-30;i++)
-		printf("=");
+		std::cout << "=";
 
-	printf("#\n");
+	std::cout << "#" << std::endl;
 }
 	
 bool is_token(char c){
@@ -53,23 +53,23 @@ void display_bf(std::string code,int now,char *output){
 	bool flag=false;
 
 	//show source
-	printf("\033[%d;%dH",++x,y);
-	printf("brainfuck code\n");
+	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
+	std::cout << "brainfuck code\n" << std::endl;
 	create_flame();
-	printf("\033[%d;%dH",++x,y+2);
+	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	while(index<code.size()){
 		if(is_token(code[index])){
 			if(index==now){
-				printf("\033[47m");
-				printf("%c",code[index]);
-				printf("\033[49m");
+				std::cout << "\033[47m" << std::endl;
+				std::cout << code[index] << std::endl;
+				std::cout << "\033[49m" << std::endl;
 			}else{
-				printf("%c",code[index]);
+				std::cout << code[index] << std::endl;
 			}
 
 			if((index+1)%(column-33)==0){
-				printf("\n");
-				printf("\033[%d;%dH",++x,y+2);
+				std::cout << std::endl;
+				std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 			}
 		}
 		index++;
@@ -78,9 +78,9 @@ void display_bf(std::string code,int now,char *output){
 	create_flame();
 	
 	//show output
-	printf("\033[%d;%dH",++x,y);
-	printf("\033[%d;%dH",++x,y);
-	printf("output:%s\n",output);
+	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
+	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
+	std::cout << "output" << output << std::endl;
 
 }
 
@@ -104,34 +104,34 @@ void display_array(uint8_t *memory,char *output){
 	}
 
 	//show memory
-	printf("\033[%d;%dH",x,y+2);
+	std::cout << "\033["<< x << ";" << y+2 << "H" << std::flush;
 	for(i=index_start;i<(index_start+box_num);i++){
-		printf("+%3d",i);
+		std::cout << "+" << std::setw(3) << i << std::flush;
 	}
-	printf("+\n");
+	std::cout << "+" << std::endl;
 	
-	printf("\033[%d;%dH",++x,y+2);
+	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	pointer_start=head+sizeof(uint8_t*)*index_start;
 	for(pointer=pointer_start; pointer<(pointer_start+box_num); pointer++){
-		printf("|%3d",*(pointer));
+		std::cout << "|" << std::setw(3) << *(pointer) << std::flush;
 	}
-	printf("|\n");
+	std::cout << "|" << std::endl;
 	
-	printf("\033[%d;%dH",++x,y+2);
+	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	for(i=0;i<box_num;i++){
-		printf("+---");
+		std::cout << "+---" << std::flush;
 	}
-	printf("+\n");
+	std::cout << "+" << std::endl;
 	
 	//show pointer
-	printf("\033[%d;%dH",++x,y+2);
+	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	for(i=0;i<address-index_start;i++){
-		printf("    ");
+		std::cout << "    " << std::flush;
 	}
-	printf("  ^\n");
+	std::cout << "  ^" << std::endl;
 }
 
-void processor(std::string bf,std::wstring knk){
+void processor(std::string bf,std::wstring kinako){
 	char output[100000];
 	int index=0;
 	int len_out=0;
@@ -192,6 +192,12 @@ void processor(std::string bf,std::wstring knk){
 	}
 }
 
+std::string knk2bf(std::wstring kinako){
+	std::string bf;
+	while(0){}
+	return bf;
+}
+
 int main(int argc,char *argv[]){
 	char *filename;
 	std::locale::global(std::locale(""));
@@ -206,7 +212,7 @@ int main(int argc,char *argv[]){
 			ms=strtol(str,&str,10);
 		}else{
 			std::cerr << "Invalid argument." << std::endl;
-			std::cerr << "Usage:./kinako-chan -(h|n|s) terget_file" << std::endl;
+			std::cerr << "Usage: ./kinako-chan -(h|n|s) terget_file" << std::endl;
 			std::cerr << "	--help(-h) :show this help" << std::endl;
 			std::cerr << "	--no-visualize(-n) :only print result" << std::endl;
 			std::cerr << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
@@ -214,13 +220,13 @@ int main(int argc,char *argv[]){
 		}
 	}else if(argc==2){
 		if(strcmp(argv[1],"--help")==0 || strcmp(argv[1],"-h")==0){
-			printf("kinako-chan -Brainfuck interpreter and visualizer- \n");
-			printf("Usage:./kinako-chan -(h|n|s) terget_file \n");
-			printf("	--help(-h) :show this help\n");
-			printf("	--no-visualize(-n) :only print result\n");
-			printf("	--speed=(-s=) :run speed[ms]\n\n");
-			printf("Auter:Takana Norimasa \n");
-			printf("Repository:https://github.com/Takana-Norimasa/kinako-chan \n");
+			std::cout << "kinako-chan -Brainfuck interpreter and visualizer- " << std::endl;
+			std::cout << "Usage: ./kinako-chan -(h|n|s) terget_file " << std::endl;
+			std::cout << "	--help(-h) :show this help" << std::endl;
+			std::cout << "	--no-visualize(-n) :only print result" << std::endl;
+			std::cout << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
+			std::cout << "Auter:Takana Norimasa " << std::endl;
+			std::cout << "Repository:https://github.com/Takana-Norimasa/kinako-chan " << std::endl;
 			return 0;
 		}
 		filename=argv[1];

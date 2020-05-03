@@ -1,4 +1,6 @@
-# kinako-chan [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# kinako-chan 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+ [![Build Status](https://travis-ci.com/Seigenkousya/kinako-chan.svg?branch=master)](https://travis-ci.com/Seigenkousya/kinako-chan)  
 kinako-chan is a programming language that can be programmed like momone-chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
@@ -12,10 +14,12 @@ $ make install
 ```
 
 # usage
+<pre>
 Usage: ./kinako-chan -(h|n|s=) terget_file  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--help(-h) :show help  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--no-visualize(-n) :only print result  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--speed=(-s=) :demo speed[ms]  
+	--help(-h) :show help  
+	--no-visualize(-n) :only print result  
+	--speed=(-s=) :demo speed[ms]  
+</pre>
 
 ## example
 ```terminal
@@ -42,7 +46,7 @@ _kinako-chan is fully Turing complete._
 |黃奈子ちゃん黄奈子ちゃん|increment the byte at the data pointer|>|ptr++;|
 |黃奈子ちゃん黃奈子ちゃん|decrement the byte at the data pointer|<|ptr--;|
 |黃奈子ちゃん黄奈孑ちゃん|output the byte at the data pointer|.|putchar(\*ptr);|
-|黃奈子ちゃん黃奈孑ちゃん|accept one byte of input,|,|\*ptr=getchar();|
+|黃奈子ちゃん黃奈孑ちゃん|accept one byte of input|,|\*ptr=getchar();|
 |黄奈子ちゃん黄奈孑ちゃん|jump to '黄奈子ちゃん黄奈孑ちゃん' <br>if the byte at data pointer is zero|[|while(\*ptr){|
 |黄奈孑ちゃん黄奈子ちゃん|jump to '黄奈孑ちゃん黄奈子ちゃん' <br>if the byte at data pointer is zero|]|}|
 

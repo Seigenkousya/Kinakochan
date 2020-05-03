@@ -1,0 +1,9 @@
+language: cpp
+
+compiler:
+        - clang++
+        - g++
+
+script:
+  - g++ --version
+  - g++ -g -O0 -o kinako-chan.cpp && ./kinako-chan -h
