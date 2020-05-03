@@ -41,10 +41,10 @@ _kinako-chan is fully Turing complete._
 |黄奈子ちゃん黃奈子ちゃん|decrement the data pointer|-|(\*ptr)--;|
 |黃奈子ちゃん黄奈子ちゃん|increment the byte at the data pointer|>|ptr++;|
 |黃奈子ちゃん黃奈子ちゃん|decrement the byte at the data pointer|<|ptr--;|
-|黄奈子ちゃん!|output the byte at the data pointer|.|putchar(\*ptr);|
-|黃奈子ちゃん!|accept one byte of input,|,|\*ptr=getchar();|
-|黄奈子ちゃん&nbsp;(<-have a space)|jump to '黃奈子ちゃん ' if the byte at data pointer is zero|[|while(\*ptr){|
-|黃奈子ちゃん&nbsp;(<-have a space)|jump to '黄奈子ちゃん ' if the byte at data pointer is zero|]|}|
+|黃奈子ちゃん黄奈孑ちゃん|output the byte at the data pointer|.|putchar(\*ptr);|
+|黃奈子ちゃん黃奈孑ちゃん|accept one byte of input,|,|\*ptr=getchar();|
+|黄奈子ちゃん黄奈孑ちゃん|jump to '黄奈子ちゃん黄奈孑ちゃん' if the byte at data pointer is zero|[|while(\*ptr){|
+|黄奈孑ちゃん黄奈子ちゃん|jump to '黄奈孑ちゃん黄奈子ちゃん' if the byte at data pointer is zero|]|}|
 
 kinako-chan is a sequence of these commands, possibly interspersed with other characters (which are ignored).  
 The commands are executed sequentially, with some exceptions: an instruction pointer begins at the first command, and each command it points to is executed, after which it normally moves forward to the next command. The program terminates when the instruction pointer moves past the last command.   
