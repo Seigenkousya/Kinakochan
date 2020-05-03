@@ -195,7 +195,8 @@ void processor(std::string bf,std::wstring kinako){
 
 std::string knk2bf(std::wstring kinako){
 	std::string bf;
-	while(0){}
+	while(0){
+	}
 	return bf;
 }
 

@@ -1,4 +1,7 @@
-# kinako-chan [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.com/Seigenkousya/kinako-chan.svg?branch=master)](https://travis-ci.com/Seigenkousya/kinako-chan)    
+# kinako-chan 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+ [![Build Status](https://travis-ci.com/Seigenkousya/kinako-chan.svg?branch=master)](https://travis-ci.com/Seigenkousya/kinako-chan)    
+
 kinako-chan is a programming language that can be programmed like momone-chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
@@ -12,12 +15,12 @@ $ make install
 ```
 
 # usage
-<pre>
-Usage: ./kinako-chan -(h|n|s=) terget_file  
+```terminal
+$ ./kinako-chan -(h|n|s=) terget_file  
 	--help(-h) :show help  
 	--no-visualize(-n) :only print result  
 	--speed=(-s=) :demo speed[ms]  
-</pre>
+```
 
 ## example
 ```terminal
