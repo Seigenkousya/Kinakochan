@@ -10,7 +10,10 @@ install:
 clean:
 	rm -f *.o kinako-chan
 
-test: kinako-chan
+demo: kinako-chan
 	./kinako-chan example.bf
 
-.PHONY: test clean install
+test: kinako-chan
+	./kinako-chan -h
+
+.PHONY: demo test clean install

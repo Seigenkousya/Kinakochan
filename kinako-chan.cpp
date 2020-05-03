@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <stdint.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 
