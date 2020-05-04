@@ -50,38 +50,63 @@ bool is_token(char c){
 }
 
 void display_knk(std::wstring knk,int now){
-	int index=0;
+	int index;
+	int line_number;
+	int counter=0;
 	int knk_xsize=(column-33)/(12*2);
 	int knk_ysize=row-14-2;
 	int flamesize=knk_xsize*knk_ysize;
+	static int start=0;
+	static int line_start=1;
+
+	index=start;
+	line_number=line_start;
 
 	//show source
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
 	std::wcout << L"kinako-chan code\n" << std::endl;
 	create_flame();
-	std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
 
-	if(knk.size()/12<flamesize){
-		index=now-knk_xsize;
-	}
+	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
+	std::wcout << std::setw(2) << line_number << ": "<< std::flush;
+	std::wcout << L"\033["<< x << L";" << y+5 << L"H" << std::flush;
+	line_number++;
 
-	while(index<(flamesize*12) && index<knk.size()){
-		if(index == now*12){
-			std::wcout << L"\033[42m" << std::flush;
-			std::wcout << knk.substr(index,12);
-			std::wcout << L"\033[49m" << std::flush;
+	while(counter<flamesize){
+		if(index<knk.size()){
+			if(index == now*12){
+				std::wcout << L"\033[42m" << std::flush;
+				std::wcout << knk.substr(index,12);
+				std::wcout << L"\033[49m" << std::flush;
+			}else{
+				std::wcout << knk.substr(index,12);
+			}
+
+			if(((counter+1) %knk_xsize)==0 && counter+1 != flamesize){
+				std::wcout << std::endl;
+				std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
+				std::wcout << std::setw(2) << line_number << ": " << std::flush;
+				std::wcout << L"\033["<< x << L";" << y+5 << L"H" << std::flush;
+				line_number++;
+			}
+
+			index+=12;
+			counter++;
 		}else{
-			std::wcout << knk.substr(index,12);
+			std::wcout << L"\033[0K" << std::flush;
+			index++;
+			break;
 		}
-
-		if((((index/12)+1)%knk_xsize)==0){
-			std::wcout << std::endl;
-			std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
-		}
-		index+=12;
 	}
-	std::wcout << L"\033["<< --x << L";" << y+2 << L"H" << std::flush;
+
 	create_flame();
+	
+	//scroll
+	if((knk.size()/12)>flamesize && now==(start/12)+flamesize-1){
+		start+=(knk_xsize)*12;
+		line_start++;
+	}
+
 }
 
 void display_bf(std::wstring code,int now,char *output){
