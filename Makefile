@@ -14,6 +14,6 @@ demo: kinako-chan
 	./kinako-chan example.bf
 
 test: kinako-chan
-	./kinako-chan -h
+	./kinako-chan example.knk
 
 .PHONY: demo test clean install

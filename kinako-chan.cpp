@@ -61,9 +61,9 @@ void display_bf(std::string code,int now,char *output){
 	while(index<code.size()){
 		if(is_token(code[index])){
 			if(index==now){
-				std::cout << "\033[47m" << std::endl;
-				std::cout << code[index] << std::endl;
-				std::cout << "\033[49m" << std::endl;
+				std::cout << "\033[47m" << std::flush;
+				std::cout << code[index] << std::flush;
+				std::cout << "\033[49m" << std::flush;
 			}else{
 				std::cout << code[index] << std::endl;
 			}
@@ -107,33 +107,33 @@ void display_array(uint8_t *memory,char *output){
 	//show memory
 	std::cout << "\033["<< x << ";" << y+2 << "H" << std::flush;
 	for(i=index_start;i<(index_start+box_num);i++){
-		std::cout << "+" << std::setw(3) << i << std::flush;
+		std::cout << "+" << std::setw(3) << i;
 	}
 	std::cout << "+" << std::endl;
 	
 	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	pointer_start=head+sizeof(uint8_t*)*index_start;
 	for(pointer=pointer_start; pointer<(pointer_start+box_num); pointer++){
-		std::cout << "|" << std::setw(3) << *(pointer) << std::flush;
+		std::cout << "|" << std::setw(3) << *(pointer);
 	}
 	std::cout << "|" << std::endl;
 	
 	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	for(i=0;i<box_num;i++){
-		std::cout << "+---" << std::flush;
+		std::cout << "+---";
 	}
 	std::cout << "+" << std::endl;
 	
 	//show pointer
 	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	for(i=0;i<address-index_start;i++){
-		std::cout << "    " << std::flush;
+		std::cout << "    ";
 	}
 	std::cout << "  ^" << std::endl;
 }
 
 void processor(std::string bf,std::wstring kinako){
-	char output[100000];
+	char output[10000];
 	int index=0;
 	int len_out=0;
 	int size=bf.size();
@@ -194,13 +194,50 @@ void processor(std::string bf,std::wstring kinako){
 }
 
 std::string knk2bf(std::wstring kinako){
-	std::string bf;
-	while(0){
+	int index=0;
+	std::string bf="";
+	while(index!=kinako.size()){
+		if(kinako.compare(index,12,L"黄奈子ちゃん黄奈子ちゃん")==0){
+			bf.append("+");
+		}else if(kinako.compare(index,12,L"黄奈子ちゃん黃奈子ちゃん")==0){
+			bf.append("-");
+		}else if(kinako.compare(index,12,L"黃奈子ちゃん黄奈子ちゃん")==0){
+			bf.append(">");
+		}else if(kinako.compare(index,12,L"黃奈子ちゃん黃奈子ちゃん")==0){
+			bf.append("<");
+		}else if(kinako.compare(index,12,L"黃奈子ちゃん黄奈孑ちゃん")==0){
+			bf.append(",");
+		}else if(kinako.compare(index,12,L"黃奈子ちゃん黃奈孑ちゃん")==0){
+			bf.append(".");
+		}else if(kinako.compare(index,12,L"黄奈子ちゃん黄奈孑ちゃん")==0){
+			bf.append("[");
+		}else if(kinako.compare(index,12,L"黄奈孑ちゃん黄奈子ちゃん")==0){
+			bf.append("]");
+		}
+		index+=12;
 	}
+
 	return bf;
 }
 
+void syntax_check(std::wstring& source){
+	int index=0;
+	std::wstring tokens=L"黄奈子ちゃん黃孑";
+	while(index!=source.size()){
+		if(tokens.find(source[index])==std::wstring::npos){
+			source.erase(index,1);
+		}else{
+			index++;
+		}
+	}
+
+	if(source.size()%12!=0){
+		std::cerr << "undefined token." << std::endl;
+	}
+}
+
 int main(int argc,char *argv[]){
+	bool convert_mode=false;
 	char *filename;
 	std::locale::global(std::locale(""));
 	
@@ -212,6 +249,8 @@ int main(int argc,char *argv[]){
 			char *str=argv[1];
 			while(*(str++)!='=');
 			ms=strtol(str,&str,10);
+		}else if(strncmp(argv[1],"--convert",10)==0 || strncmp(argv[1],"-c",2)==0){
+			convert_mode=true;
 		}else{
 			std::cerr << "Invalid argument." << std::endl;
 			std::cerr << "Usage: ./kinako-chan -(h|n|s) terget_file" << std::endl;
@@ -226,6 +265,7 @@ int main(int argc,char *argv[]){
 			std::cout << "Usage: ./kinako-chan -(h|n|s) terget_file " << std::endl;
 			std::cout << "	--help(-h) :show this help" << std::endl;
 			std::cout << "	--no-visualize(-n) :only print result" << std::endl;
+			std::cout << "	--convert(-c) :convert kinako-chan to brainfuck file." << std::endl;
 			std::cout << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
 			std::cout << "Auter:Takana Norimasa " << std::endl;
 			std::cout << "Repository:https://github.com/Takana-Norimasa/kinako-chan " << std::endl;
@@ -255,8 +295,14 @@ int main(int argc,char *argv[]){
 	wss << file.rdbuf();
 	std::wstring source=wss.str();
 
-	//std::string bf=knk2bf(source);
-	//processor(bf,source);
+	syntax_check(source);
+	std::string bf=knk2bf(source);
+	
+	if(convert_mode){
+		std::cout << bf << std::endl;
+		return 0;
+	}
 
-	std::cout << std::endl;
+	processor(bf,source);
+
 }
