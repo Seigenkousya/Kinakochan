@@ -51,7 +51,6 @@ bool is_token(char c){
 
 void display_bf(std::string code,int now,char *output){
 	int index=0;
-	bool flag=false;
 
 	//show source
 	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
@@ -138,12 +137,11 @@ void processor(std::string bf,std::wstring kinako){
 	int index=0;
 	int len_out=0;
 	int size=bf.size();
-	char c;
 	uint8_t *memory;
 
 	// ms to us
 	ms*=1000;
-	memory=(uint8_t *)malloc(sizeof(uint8_t)*MEMORY_SIZE);
+	memory=(uint8_t *)calloc(MEMORY_SIZE,sizeof(uint8_t));
 	head=memory;
 
 	while(index!=size){
@@ -191,6 +189,42 @@ void processor(std::string bf,std::wstring kinako){
 	}
 }
 
+void bf2knk(std::wstring bf){
+	int index=0;
+
+	std::cout << "--brainfuck code--" << std::endl;
+	while(index!=bf.size()){
+		switch(bf[index]){
+			case '+':
+				std::cout << "黄奈子ちゃん黄奈子ちゃん";
+				break;
+			case '-':
+				std::cout << "黄奈子ちゃん黃奈子ちゃん";
+				break;
+			case '>':
+				std::cout << "黃奈子ちゃん黄奈子ちゃん";
+				break;
+			case '<':
+				std::cout << "黃奈子ちゃん黃奈子ちゃん";
+				break;
+			case '.':
+				std::cout << "黃奈子ちゃん黄奈孑ちゃん";
+				break;
+			case ',':
+				std::cout << "黃奈子ちゃん黃奈孑ちゃん";
+				break;
+			case '[':
+				std::cout << "黄奈子ちゃん黄奈孑ちゃん";
+				break;
+			case ']':
+				std::cout << "黄奈孑ちゃん黄奈子ちゃん";
+				break;
+		}
+		index++;
+	}
+	std::cout << std::endl;
+}
+
 std::string knk2bf(std::wstring kinako){
 	int index=0;
 	std::string bf="";
@@ -204,9 +238,9 @@ std::string knk2bf(std::wstring kinako){
 		}else if(kinako.compare(index,12,L"黃奈子ちゃん黃奈子ちゃん")==0){
 			bf.append("<");
 		}else if(kinako.compare(index,12,L"黃奈子ちゃん黄奈孑ちゃん")==0){
-			bf.append(",");
-		}else if(kinako.compare(index,12,L"黃奈子ちゃん黃奈孑ちゃん")==0){
 			bf.append(".");
+		}else if(kinako.compare(index,12,L"黃奈子ちゃん黃奈孑ちゃん")==0){
+			bf.append(",");
 		}else if(kinako.compare(index,12,L"黄奈子ちゃん黄奈孑ちゃん")==0){
 			bf.append("[");
 		}else if(kinako.compare(index,12,L"黄奈孑ちゃん黄奈子ちゃん")==0){
@@ -235,7 +269,9 @@ void syntax_check(std::wstring& source){
 }
 
 int main(int argc,char *argv[]){
-	bool convert_mode=false;
+	bool bfmode=false;
+	bool knktobf=false;
+	bool bftoknk=false;
 	char *filename;
 	std::locale::global(std::locale(""));
 	
@@ -248,12 +284,18 @@ int main(int argc,char *argv[]){
 			while(*(str++)!='=');
 			ms=strtol(str,&str,10);
 		}else if(strncmp(argv[1],"--convert",10)==0 || strncmp(argv[1],"-c",2)==0){
-			convert_mode=true;
+			bftoknk=true;
+		}else if(strncmp(argv[1],"--rev-convert",13)==0 || strncmp(argv[1],"-r",2)==0){
+			knktobf=true;
+		}else if(strncmp(argv[1],"--brainfuck",12)==0 || strncmp(argv[1],"-b",2)==0){
+			bfmode=true;
 		}else{
 			std::cerr << "Invalid argument." << std::endl;
 			std::cerr << "Usage: ./kinako-chan -(h|n|s) terget_file" << std::endl;
 			std::cerr << "	--help(-h) :show this help" << std::endl;
 			std::cerr << "	--no-visualize(-n) :only print result" << std::endl;
+			std::cout << "	--convert(-c) :convert brainfuck to kinako-chan " << std::endl;
+			std::cout << "	--rev-convert(-r) :convert kinako-chan to brainfuck " << std::endl;
 			std::cerr << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
 			exit(1);
 		}
@@ -263,39 +305,50 @@ int main(int argc,char *argv[]){
 			std::cout << "Usage: ./kinako-chan -(h|n|s) terget_file " << std::endl;
 			std::cout << "	--help(-h) :show this help" << std::endl;
 			std::cout << "	--no-visualize(-n) :only print result" << std::endl;
-			std::cout << "	--convert(-c) :convert kinako-chan to brainfuck file." << std::endl;
+			std::cout << "	--convert(-c) :convert brainfuck to kinako-chan " << std::endl;
+			std::cout << "	--rev-convert(-r) :convert kinako-chan to brainfuck " << std::endl;
 			std::cout << "	--speed=(-s=) :run speed[ms]\n" << std::endl;
-			std::cout << "Auter:Takana Norimasa " << std::endl;
-			std::cout << "Repository:https://github.com/Takana-Norimasa/kinako-chan " << std::endl;
+			std::cout << "Auter:seigenkousya" << std::endl;
+			std::cout << "Repository:https://github.com/seigenkousya/kinako-chan " << std::endl;
 			return 0;
 		}
 		filename=argv[1];
 	}else{
 		std::cerr << "argument error." << std::endl;
-		std::cerr << "usage: ./kinako-chan brainfuck_script" << std::endl;
+		std::cerr << "usage: ./kinako-chan kinako-chan_script" << std::endl;
 		exit(1);
 	}
 
+	//get window size
 	struct winsize size;
 	ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
 
 	row=size.ws_row;
 	column=size.ws_col;
 
+	//read file
 	std::wifstream file(filename);
 
 	if(!file){
 		std::cerr << "failed to open file." << std::endl;
 		std::exit(1);
 	}
+
+	//get stiring
 	std::wstringstream wss;
 	wss << file.rdbuf();
 	std::wstring source=wss.str();
 
+	if(bftoknk){
+		std::cout << "bf to knk" << std::endl;
+		bf2knk(source);
+		return 0;
+	}
+
 	syntax_check(source);
 	std::string bf=knk2bf(source);
 	
-	if(convert_mode){
+	if(knktobf){
 		std::cout << bf << std::endl;
 		return 0;
 	}

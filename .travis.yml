@@ -27,4 +27,4 @@ addons:
       - gcc-5
 
 script:
-  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test
+  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
