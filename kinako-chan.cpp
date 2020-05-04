@@ -222,8 +222,8 @@ void processor(std::wstring bf,std::wstring kinako){
 				break;
 			case '.':
 				output[len_out]=*memory;
+				std::wcout << output[len_out];
 				len_out++;
-				std::wcout << *memory;
 				break;
 			case ',':
 				std::cin >> *memory;
@@ -364,15 +364,15 @@ int main(int argc,char *argv[]){
 		}
 	}else if(argc==2){
 		if(strcmp(argv[1],"--help")==0 || strcmp(argv[1],"-h")==0){
-			std::wcout << L"kinako-chan -Brainfuck interpreter and visualizer- L" << std::endl;
-			std::wcout << L"Usage: ./kinako-chan -(h|n|s) terget_file L" << std::endl;
+			std::wcout << L"kinako-chan -Brainfuck interpreter and visualizer-" << std::endl;
+			std::wcout << L"Usage: ./kinako-chan -(h|n|s) terget_file " << std::endl;
 			std::wcout << L"	--help(-h) :show this help" << std::endl;
 			std::wcout << L"	--no-visualize(-n) :only print result" << std::endl;
-			std::wcout << L"	--convert(-c) :convert brainfuck to kinako-chan L" << std::endl;
-			std::wcout << L"	--rev-convert(-r) :convert kinako-chan to brainfuck L" << std::endl;
+			std::wcout << L"	--convert(-c) :convert brainfuck to kinako-chan " << std::endl;
+			std::wcout << L"	--rev-convert(-r) :convert kinako-chan to brainfuck " << std::endl;
 			std::wcout << L"	--speed=(-s=) :run speed[ms]\n" << std::endl;
 			std::wcout << L"Auter:seigenkousya" << std::endl;
-			std::wcout << L"Repository:https://github.com/seigenkousya/kinako-chan L" << std::endl;
+			std::wcout << L"Repository:https://github.com/seigenkousya/kinako-chan " << std::endl;
 			return 0;
 		}
 		filename=argv[1];

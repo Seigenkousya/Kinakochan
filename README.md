@@ -20,6 +20,7 @@ $ ./kinako-chan -(h|n|s=) terget_file
 	--help(-h) :show help  
 	--no-visualize(-n) :only print result  
 	--convert(-c) :convert kinako-chan file to brainfuck file.    
+	--rev-convert(-r) :convert brainfuck to kinako-chan file.    
 	--speed=(-s=) :demo speed[ms]  
 ```
 
