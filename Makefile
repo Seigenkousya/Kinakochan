@@ -11,9 +11,9 @@ clean:
 	rm -f *.o kinako-chan
 
 demo: kinako-chan
-	./kinako-chan example.bf
+	./kinako-chan -s=1000 example.knk
 
 test: kinako-chan
-	./kinako-chan example.knk
+	./kinako-chan -c example.knk
 
 .PHONY: demo test clean install

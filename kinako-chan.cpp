@@ -58,14 +58,15 @@ void display_bf(std::string code,int now,char *output){
 	std::cout << "brainfuck code\n" << std::endl;
 	create_flame();
 	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
+
 	while(index<code.size()){
 		if(is_token(code[index])){
 			if(index==now){
 				std::cout << "\033[47m" << std::flush;
-				std::cout << code[index] << std::flush;
+				std::cout << code[index];
 				std::cout << "\033[49m" << std::flush;
 			}else{
-				std::cout << code[index] << std::endl;
+				std::cout << code[index];
 			}
 
 			if((index+1)%(column-33)==0){
@@ -81,7 +82,7 @@ void display_bf(std::string code,int now,char *output){
 	//show output
 	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
 	std::cout << "\033["<< ++x << ";" << y << "H" << std::flush;
-	std::cout << "output" << output << std::endl;
+	std::cout << "output: " << output << std::endl;
 
 }
 
@@ -114,7 +115,7 @@ void display_array(uint8_t *memory,char *output){
 	std::cout << "\033["<< ++x << ";" << y+2 << "H" << std::flush;
 	pointer_start=head+sizeof(uint8_t*)*index_start;
 	for(pointer=pointer_start; pointer<(pointer_start+box_num); pointer++){
-		std::cout << "|" << std::setw(3) << *(pointer);
+		std::cout << "|" << std::setw(3) << unsigned(*(pointer));
 	}
 	std::cout << "|" << std::endl;
 	
@@ -145,13 +146,7 @@ void processor(std::string bf,std::wstring kinako){
 	memory=(uint8_t *)malloc(sizeof(uint8_t)*MEMORY_SIZE);
 	head=memory;
 
-	while(index<size){
-		//visualize
-		if(!no_visualize){
-			display_array(memory,output);
-			display_bf(bf,index,output);
-		}
-
+	while(index!=size){
 		switch(bf[index]){
 			case '>':
 				within_range(++memory);
@@ -166,7 +161,6 @@ void processor(std::string bf,std::wstring kinako){
 				(*memory)--;
 				break;
 			case '.':
-				//std::cout << "out";
 				output[len_out]=*memory;
 				len_out++;
 				std::cout << *memory;
@@ -182,10 +176,14 @@ void processor(std::string bf,std::wstring kinako){
 				if(*memory!=0)
 					while(bf[index]!='[') index--;
 				break;
-			default:
-				index++;
-				continue;
 		}
+		
+		//visualize
+		if(!no_visualize){
+			display_array(memory,output);
+			display_bf(bf,index,output);
+		}
+
 		index++;
 
 		if(!no_visualize)
@@ -290,7 +288,6 @@ int main(int argc,char *argv[]){
 		std::cerr << "failed to open file." << std::endl;
 		std::exit(1);
 	}
-
 	std::wstringstream wss;
 	wss << file.rdbuf();
 	std::wstring source=wss.str();
@@ -304,5 +301,5 @@ int main(int argc,char *argv[]){
 	}
 
 	processor(bf,source);
-
+	std::cout << std::endl;
 }
