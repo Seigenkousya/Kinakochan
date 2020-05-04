@@ -14,6 +14,6 @@ demo: kinako-chan
 	./kinako-chan -s=1000 example.knk
 
 test: kinako-chan
-	./kinako-chan -c example.knk
+	./kinako-chan example.knk
 
 .PHONY: demo test clean install
