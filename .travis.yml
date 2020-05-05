@@ -30,13 +30,12 @@ script:
     - cat Makefile
     - cat ./src/main.cpp
     - cat ./src/obj/main.o
-    - cd ls
+    - ls
     - cd src/
-    - cd ls
+    - ls
     - cd obj/
-    - cd ls
-    - cd ../
-    - cd ../
+    - ls
+    - cd ${TRAVIS_BUILD_DIR}
     - cd include/
     - cd ../
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
