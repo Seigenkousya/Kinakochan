@@ -28,7 +28,7 @@ test: kinako-chan
 	./kinako-chan -s=50 example.knk
 
 test1: kinako-chan
-	./kinako-chan -h example.knk
+	./kinako-chan -h
 
 test2: kinako-chan
 	./kinako-chan -n example.knk
