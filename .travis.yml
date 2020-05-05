@@ -5,9 +5,9 @@ jobs:
     - os: osx
       osx_image: xcode8
       env:
-        - CXX=g++-5
+        - CXX=g++
         - CXXFLAGS=-std=c++11
-        - JOBS_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
+          #        - JOBS_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
       addons:
         homebrew:
           packages:
