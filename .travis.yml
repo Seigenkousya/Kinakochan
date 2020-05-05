@@ -9,7 +9,7 @@ compiler:
     - g++
 
 install:
-    - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install make
+    - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install make; fi
     - if [ "$CXX" = "g++" ]; then export CXXFLAGS="-std=c++11"; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
     - if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11"; fi
