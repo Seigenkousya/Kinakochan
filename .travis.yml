@@ -26,18 +26,6 @@ addons:
         - gcc-5
 
 script:
-    - echo $TRAVIS_BUILD_DIR
-    - cat Makefile
-    - cat ./src/main.cpp
-    - cat ./src/obj/main.o
-    - ls
-    - cd src/
-    - ls
-    - cd obj/
-    - ls
-    - cd ${TRAVIS_BUILD_DIR}
-    - cd include/
-    - cd ../
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
