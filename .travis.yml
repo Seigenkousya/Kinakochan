@@ -7,7 +7,12 @@ jobs:
       env:
         - CXX=g++-5
         - CXXFLAGS=-std=c++11
-        - JOBS_EVAL="brew update && brew install gcc5"
+#        - JOBS_EVAL="brew update && brew install gcc5"
+      addons:
+        homebrew:
+          packages:
+            - gcc@5
+          update: true
     - os: osx
       osx_image: xcode8
       env: 
