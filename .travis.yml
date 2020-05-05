@@ -27,6 +27,12 @@ addons:
 
 script:
     - echo $TRAVIS_BUILD_DIR
+    - cd src/
+    - cd obj/
+    - cd ../
+    - cd ../
+    - cd include/
+    - cd ../
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2

@@ -9,7 +9,7 @@ uint8_t *head;
 bool no_visualize=false;
 
 int main(int argc,char *argv[]){
-	bool bfmode=false;
+	bool bfmode=true;
 	bool knktobf=false;
 	bool bftoknk=false;
 	char *filename;
