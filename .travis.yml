@@ -5,9 +5,9 @@ jobs:
     - os: osx
       osx_image: xcode8
       env:
-        - CXX=g++
+        - CXX=g++-5
         - CXXFLAGS=-std=c++11
-#        - JOBS_EVAL="brew update && brew install gcc5"
+        - JOBS_EVAL=brew install gcc5 && CC=gcc-5 && CXX=g++-5
       addons:
         homebrew:
           packages:
@@ -50,10 +50,7 @@ before_install:
 script:
     - uname -a
     - make -v 
-    - ls 
-    - ls ./include
-    - ls ./src
-    - ls ./src/obj
+    - g++ -v 
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
