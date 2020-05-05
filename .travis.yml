@@ -1,30 +1,57 @@
 language: cpp
 
-os:
-        - linux
-        - osx
+jobs:
+  include:
+    - os: osx
+      osx_image: xcode8
+      env:
+        - CXX=g++
+        - CXXFLAGS=-std=c++11
+          #        - JOBS_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
+      addons:
+        homebrew:
+          packages:
+            - gcc@5
+    - os: osx
+      osx_image: xcode8
+      env: 
+        - CXX=clang++
+        - CXXFLAGS=-std=c++11
 
-compiler:
-    - clang++
-    - g++
+    - os: linux
+      env:
+        - CXX=g++-5
+        - CXXFLAGS=-std=c++11
+      addons:
+        apt:
+          packages:
+            - g++-5
+            - gcc-5
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
+            - llvm-toolchain-precise-3.8
+    - os: linux
+      env: 
+        - CXX=clang++-3.8
+        - CXXFLAGS=-std=c++11
+      addons:
+        apt:
+          packages:
+            - clang-3.8
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
+            - llvm-toolchain-precise-3.8
 
-install:
-  - if [ "$CXX" = "g++" ]; then export CXXFLAGS="-std=c++11"; fi
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-  - if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11"; fi
-  - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
-
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.7
-      - llvm-toolchain-precise
-    packages:
-      - clang-3.7
-      - g++-5
-      - gcc-5
+before_install:
+    - eval "${JOBS_EVAL}"
 
 script:
-  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
+    - uname -a
+    - make -v 
+    - g++ -v 
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test3

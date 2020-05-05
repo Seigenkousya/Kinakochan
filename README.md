@@ -1,12 +1,15 @@
 # kinako-chan 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
- [![Build Status](https://travis-ci.com/Seigenkousya/kinako-chan.svg?branch=master)](https://travis-ci.com/Seigenkousya/kinako-chan)    
+ [![Build Status](https://travis-ci.com/Seigenkousya/kinako-chan.svg?branch=master)](https://travis-ci.com/Seigenkousya/kinako-chan)
+ ![Version](https://img.shields.io/badge/version-1.0.2-orange)
+ ![S.I.N](https://img.shields.io/badge/S.I.N-%23003-00aaaa)  
 
 kinako-chan is a programming language that can be programmed like momone-chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
 # install
-kinako-chan needs a gnu g++.
+kinako-chan needs a g++ or clang.  
+See [Travis ci](https://travis-ci.com/github/Seigenkousya/kinako-chan) for details.
 
 ```terminal
 $ git clone https://github.com/Seigenkousya/kinako-chan.git
@@ -16,10 +19,10 @@ $ make install
 
 # usage
 ```terminal
-$ ./kinako-chan -(h|n|s=) terget_file  
+$ ./kinako-chan -(h|n|c|s=) terget_file  
 	--help(-h) :show help  
 	--no-visualize(-n) :only print result  
-	--convert(-c) :convert kinako-chan file to brainfuck file.    
+	--convert(-c) (knk2bf|bf2knk):convert kinako-chan to brainfuck or brainfuck to kinako-chan    
 	--speed=(-s=) :demo speed[ms]  
 ```
 
@@ -33,6 +36,16 @@ kinako-chan show only result.
 $ ./kinako-chan -s=100 terget_file
 ```
 kinako-chan stepping every 100ms.
+
+```terminal
+$ ./kinako-chan -c knk2bf terget_file.knk
+```
+convert kinako-chan to brainfuck.
+
+```terminal
+$ ./kinako-chan -c bf2knk terget_file.bf
+```
+convert brainfuck to kinako-chan.
 
 
 # Language specifications

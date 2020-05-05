@@ -1,19 +1,36 @@
-Cxx:=g++
-CPPFLAGS:=-g -O0
+Cxx	 := g++
+CXXFLAGS := -g -O0
 
-kinako-chan: kinako-chan.cpp
-	$(Cxx) $(CPPFLAGS) kinako-chan.cpp -o kinako-chan
+INCLUDE  := -I./include
+TARGET   := ./kinako-chan
+SRCDIR   := ./src
+OBJDIR   := ./src/obj
+SOURCES  := $(wildcard ./src/*.cpp)
+OBJECTS  := $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))
 
-install:
-	$(Cxx) -O2  kinako-chan.cpp -o kinako-chan
+$(TARGET): $(OBJECTS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@[ -d $(OBJDIR) ]
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
+
+install: $(OBJECTS)
+	$(CXX) -O2 -o $(TARGET) $^ $(LDFLAGS)
 
 clean:
-	rm -f *.o kinako-chan
-
-demo: kinako-chan
-	./kinako-chan -s=1000 example.knk
+	rm -f $(OBJECTS) $(TARGET)
 
 test: kinako-chan
-	./kinako-chan -s=30 example.knk
+	./kinako-chan -s=50 example.knk
 
-.PHONY: demo test clean install
+test1: kinako-chan
+	./kinako-chan -h
+
+test2: kinako-chan
+	./kinako-chan -n example.knk
+
+test3: kinako-chan
+	./kinako-chan -s=5 example.knk
+
+.PHONY: test test1 test2 test3 clean install
