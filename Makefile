@@ -8,12 +8,12 @@ install:
 	$(Cxx) -O2  kinako-chan.cpp -o kinako-chan
 
 clean:
-	rm -f *.o kinako-chan
+	rm -f *.o *.out kinako-chan
 
 demo: kinako-chan
 	./kinako-chan -s=1000 example.knk
 
 test: kinako-chan
-	./kinako-chan -s=100 example.knk
+	./kinako-chan -s=50 example.knk
 
 .PHONY: demo test clean install

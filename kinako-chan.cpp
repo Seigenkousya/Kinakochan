@@ -102,7 +102,7 @@ void display_knk(std::wstring knk,int now){
 	create_flame();
 	
 	//scroll
-	if((knk.size()/12)>flamesize && now==(start/12)+flamesize-1){
+	if((knk.size()/12)>flamesize && now==(start/12)+flamesize-(knk_xsize*2)-1){
 		start+=(knk_xsize)*12;
 		line_start++;
 	}
