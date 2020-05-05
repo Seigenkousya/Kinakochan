@@ -14,7 +14,6 @@ install:
     - if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11"; fi
     - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
 
-
 addons:
   apt:
     sources:
@@ -27,7 +26,6 @@ addons:
         - gcc-5
 
 script:
-    - tree .
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2

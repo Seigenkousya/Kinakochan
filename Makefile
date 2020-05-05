@@ -16,13 +16,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
 
 install: $(OBJECTS)
-	$(CXX) -O2 -o $@ $^ $(LDFLAGS)
+	$(CXX) -O2 -o $(TARGET) $^ $(LDFLAGS)
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
-
-demo: kinako-chan
-	./kinako-chan -s=100 example.knk
 
 test: kinako-chan
 	./kinako-chan -s=50 example.knk
@@ -36,4 +33,4 @@ test2: kinako-chan
 test3: kinako-chan
 	./kinako-chan -s=5 example.knk
 
-.PHONY: demo test test1 test2 test3 clean install
+.PHONY: test test1 test2 test3 clean install
