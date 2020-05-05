@@ -7,6 +7,10 @@ jobs:
       env:
         - CXX=g++-5
         - CXXFLAGS=-std=c++11
+      addons:
+        homebrew:
+          packages:
+          - gcc5
     - os: osx
       osx_image: xcode9.4
       env: 
