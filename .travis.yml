@@ -2,32 +2,32 @@ language: cpp
 
 matrix:
     include:
-    - os: osx
-        env: CXX=g++-5
-    - os: osx
-        env: CXX=clang++
+        - os: osx
+            env: CXX=g++-5
+        - os: osx
+            env: CXX=clang++
 
-    - os: linux
-        env: CXX=g++-5
-        addons:
-            apt:
-                packages:
-                    - g++-5
-                    - gcc-5
-                sources:
-                    - ubuntu-toolchain-r-test
-                    - llvm-toolchain-precise
-                    - llvm-toolchain-precise-3.8
-    - os: linux
-        env: CXX=clang++-3.8
-        addons:
-            apt:
-                packages:
-                    - clang-3.8
-                sources:
-                    - ubuntu-toolchain-r-test
-                    - llvm-toolchain-precise
-                    - llvm-toolchain-precise-3.8
+        - os: linux
+            env: CXX=g++-5
+            addons:
+                apt:
+                    packages:
+                        - g++-5
+                        - gcc-5
+                    sources:
+                        - ubuntu-toolchain-r-test
+                        - llvm-toolchain-precise
+                        - llvm-toolchain-precise-3.8
+        - os: linux
+            env: CXX=clang++-3.8
+            addons:
+                apt:
+                    packages:
+                        - clang-3.8
+                    sources:
+                        - ubuntu-toolchain-r-test
+                        - llvm-toolchain-precise
+                        - llvm-toolchain-precise-3.8
 
 script:
     - uname -a
