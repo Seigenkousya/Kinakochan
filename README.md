@@ -13,6 +13,28 @@ $ git clone https://github.com/Seigenkousya/kinako-chan.git
 $ cd kinako-chan
 $ make install
 ```
+## constitution
+```
+.
+├── LICENSE
+├── Makefile
+├── README.md
+├── example.bf
+├── example.knk
+├── include
+│   └── kinako-chan.h
+├── kinako-chan
+└── src
+    ├── code_check.cpp
+    ├── display.cpp
+    ├── main.cpp
+    ├── obj
+    │   ├── code_check.o
+    │   ├── display.o
+    │   ├── main.o
+    │   └── process.o
+    └── process.cpp
+```
 
 # usage
 ```terminal
