@@ -15,10 +15,10 @@
 int x;
 int y;
 int row;
-int ms;
+int ms=20;
 int column;
 uint8_t *head;
-bool no_visualize;
+bool no_visualize=false;
 
 // code_check
 void bf2knk(std::wstring bf);

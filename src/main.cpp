@@ -1,8 +1,5 @@
 #include "kinako-chan.h"
 
-ms=20;
-no_visualize=false;
-
 int main(int argc,char *argv[]){
 	bool bfmode=false;
 	bool knktobf=false;

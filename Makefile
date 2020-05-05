@@ -8,8 +8,8 @@ OBJDIR   := ./src/obj
 SOURCES  := $(wildcard ./src/*.cpp)
 OBJECTS  := $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))
 
-$(TARGET): $(OBJECTS) $(LIBS)
-	$(CXX) $(CXXFLAGS)-o $@ $^ $(LDFLAGS)
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@[ -d $(OBJDIR) ]
@@ -22,9 +22,18 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 
 demo: kinako-chan
-	./kinako-chan -s=1000 example.knk
+	./kinako-chan -s=100 example.knk
 
 test: kinako-chan
 	./kinako-chan -s=50 example.knk
 
-.PHONY: demo test clean install
+test1: kinako-chan
+	./kinako-chan -h example.knk
+
+test2: kinako-chan
+	./kinako-chan -n example.knk
+
+test3: kinako-chan
+	./kinako-chan -s=5 example.knk
+
+.PHONY: demo test test1 test2 test3 clean install
