@@ -79,7 +79,7 @@ void display_bf(std::wstring code,int now,char *output){
 	int flamesize=bf_xsize*bf_ysize;
 	static int start=0;
 
-	//show bf code
+	// show bf code
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
 	std::wcout << L"brainfuck code\n" << std::endl;

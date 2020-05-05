@@ -18,7 +18,6 @@ bool is_token(char c){
 	return false;
 }
 
-
 void processor(std::wstring bf,std::wstring kinako){
 	char output[10000];
 	int index=0;

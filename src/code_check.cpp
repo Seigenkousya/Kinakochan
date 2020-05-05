@@ -70,7 +70,6 @@ std::wstring knk2bf(std::wstring kinako){
 		}
 		index+=12;
 	}
-
 	return bf;
 }
 

@@ -15,6 +15,7 @@ int main(int argc,char *argv[]){
 	char *filename;
 	std::locale::global(std::locale(""));
 
+	// check argument
 	if(argc==2){
 		filename=argv[1];
 		if(strcmp(argv[1],"--help")==0 || strcmp(argv[1],"-h")==0){
