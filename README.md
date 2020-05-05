@@ -7,7 +7,7 @@
 kinako-chan is a programming language that can be programmed like momone-chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
-# install
+# Install
 kinako-chan needs a g++ or clang.  
 See [Travis ci](https://travis-ci.com/github/Seigenkousya/kinako-chan) for details.
 
@@ -17,7 +17,7 @@ $ cd kinako-chan
 $ make install
 ```
 
-# usage
+# Usage
 ```terminal
 $ ./kinako-chan -(h|n|c|s=) terget_file  
 	--help(-h) :show help  
