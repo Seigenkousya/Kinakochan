@@ -27,8 +27,14 @@ addons:
 
 script:
     - echo $TRAVIS_BUILD_DIR
+    - cat Makefile
+    - cat ./src/main.cpp
+    - cat ./src/obj/main.o
+    - cd ls
     - cd src/
+    - cd ls
     - cd obj/
+    - cd ls
     - cd ../
     - cd ../
     - cd include/
