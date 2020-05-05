@@ -72,7 +72,12 @@ void display_knk(std::wstring knk,int now){
 }
 
 void display_bf(std::wstring code,int now,char *output){
-	int index=0;
+	int index;
+	int counter=0;
+	int bf_xsize=(column-33);
+	int bf_ysize=3;
+	int flamesize=bf_xsize*bf_ysize;
+	static int start=0;
 
 	//show bf code
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
@@ -81,7 +86,8 @@ void display_bf(std::wstring code,int now,char *output){
 	create_flame();
 	std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
 
-	while(index<code.size()){
+	index=start;
+	while(counter<flamesize){
 		if(is_token(code[index])){
 			if(index==now){
 				std::wcout << L"\033[46m" << std::flush;
@@ -91,21 +97,25 @@ void display_bf(std::wstring code,int now,char *output){
 				std::wcout << code[index];
 			}
 
-			if((index+1)%(column-33)==0){
+			if((index+1)%(column-33)==0 && counter+1 != flamesize){
 				std::wcout << std::endl;
 				std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
 			}
 		}
 		index++;
-
+		counter++;
 	}
 	create_flame();
 	
 	//show output
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
-	std::wcout << L"output: " << output << std::endl;
+	std::wcout << L"output: " << output << std::flush;
 
+	//scroll
+	if(now==start+flamesize-1){
+		start+=bf_xsize;
+	}
 }
 
 void display_array(uint8_t *memory,char *output){
@@ -116,7 +126,7 @@ void display_array(uint8_t *memory,char *output){
 	uint8_t *pointer_start;
 	static int index_start=0;
 
-	x=2;
+	x=1;
 	y=2;
 
 	std::system("clear");

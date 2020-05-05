@@ -1,7 +1,7 @@
 #include "kinako-chan.h"
 
-int x;
-int y;
+int x=2;
+int y=0;
 int ms=20;
 int row;
 int column;

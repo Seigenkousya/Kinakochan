@@ -47,7 +47,7 @@ void processor(std::wstring bf,std::wstring kinako){
 				break;
 			case '.':
 				output[len_out]=*memory;
-				std::wcout << output[len_out];
+				if(no_visualize) std::wcout << output[len_out];
 				len_out++;
 				break;
 			case ',':
