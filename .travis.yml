@@ -1,33 +1,34 @@
 language: cpp
 
 os:
-        - linux
-        - osx
+    - linux
+    - osx
 
 compiler:
     - clang++
     - g++
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXXFLAGS="-std=c++11"; fi
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-  - if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11"; fi
-  - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+    - if [ "$CXX" = "g++" ]; then export CXXFLAGS="-std=c++11"; fi
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+    - if [ "$CXX" = "clang++" ]; then export CXXFLAGS="-std=c++11"; fi
+    - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
 
 
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.7
-      - llvm-toolchain-precise
+        - ubuntu-toolchain-r-test
+        - llvm-toolchain-precise-3.7
+        - llvm-toolchain-precise
     packages:
-      - clang-3.7
-      - g++-5
-      - gcc-5
+        - clang-3.7
+        - g++-5
+        - gcc-5
 
 script:
-  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
-  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
-  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
-  - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test3
+    - tree .
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
+    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test3
