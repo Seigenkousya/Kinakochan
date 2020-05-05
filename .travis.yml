@@ -26,6 +26,12 @@ addons:
         - gcc-5
 
 script:
+    - uname -a
+    - make -v 
+    - ls 
+    - ls ./include
+    - ls ./src
+    - ls ./src/obj
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
