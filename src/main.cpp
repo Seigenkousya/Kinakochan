@@ -29,10 +29,6 @@ int main(int argc,char *argv[]){
 			std::wcout << L"Auter: seigenkousya" << std::endl;
 			std::wcout << L"Repository: https://github.com/seigenkousya/kinako-chan " << std::endl;
 			return 0;
-		}else{
-			std::wcerr << L"argument error." << std::endl;
-			std::wcerr << L"usage: ./kinako-chan kinako-chan_script" << std::endl;
-			exit(1);
 		}
 	}else if(argc==3){
 		filename=argv[2];
