@@ -26,6 +26,7 @@ addons:
         - gcc-5
 
 script:
+    - echo $TRAVIS_BUILD_DIR
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2

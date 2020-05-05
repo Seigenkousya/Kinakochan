@@ -6,34 +6,13 @@ kinako-chan is a programming language that can be programmed like momone-chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
 # install
-kinako-chan needs a gnu g++.
+kinako-chan needs a g++ or clang.
+See [Travis ci](https://travis-ci.com/github/Seigenkousya/kinako-chan) for details
 
 ```terminal
 $ git clone https://github.com/Seigenkousya/kinako-chan.git
 $ cd kinako-chan
 $ make install
-```
-## constitution
-```
-.
-├── LICENSE
-├── Makefile
-├── README.md
-├── example.bf
-├── example.knk
-├── include
-│   └── kinako-chan.h
-├── kinako-chan
-└── src
-    ├── code_check.cpp
-    ├── display.cpp
-    ├── main.cpp
-    ├── obj
-    │   ├── code_check.o
-    │   ├── display.o
-    │   ├── main.o
-    │   └── process.o
-    └── process.cpp
 ```
 
 # usage
