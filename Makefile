@@ -1,14 +1,25 @@
-Cxx:=g++
-CPPFLAGS:=-g -O0
+Cxx	 := g++
+CXXFLAGS := -g -O0
 
-kinako-chan: kinako-chan.cpp
-	$(Cxx) $(CPPFLAGS) kinako-chan.cpp -o kinako-chan
+INCLUDE  := -I./include
+TARGET   := ./kinako-chan
+SRCDIR   := ./src
+OBJDIR   := ./src/obj
+SOURCES  := $(wildcard ./src/*.cpp)
+OBJECTS  := $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))
 
-install:
-	$(Cxx) -O2  kinako-chan.cpp -o kinako-chan
+$(TARGET): $(OBJECTS) $(LIBS)
+	$(CXX) $(CXXFLAGS)-o $@ $^ $(LDFLAGS)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@[ -d $(OBJDIR) ]
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
+
+install: $(OBJECTS) $(LIBS)
+	$(CXX) -O2 -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm -f *.o *.out kinako-chan
+	rm -f $(OBJECTS) $(TARGET)
 
 demo: kinako-chan
 	./kinako-chan -s=1000 example.knk
