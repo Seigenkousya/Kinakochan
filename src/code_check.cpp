@@ -1,5 +1,16 @@
 #include "kinako-chan.h"
 
+void invalid_argument(){
+	std::wcerr << L"Invalid argument." << std::endl;
+	std::wcerr << L"Usage: ./kinako-chan -(h|n|s) terget_file" << std::endl;
+	std::wcerr << L"	--help(-h) :show this help" << std::endl;
+	std::wcerr << L"	--no-visualize(-n) :only print result" << std::endl;
+	std::wcout << L"	--convert(-c) :convert brainfuck to kinako-chan L" << std::endl;
+	std::wcout << L"	--rev-convert(-r) :convert kinako-chan to brainfuck L" << std::endl;
+	std::wcerr << L"	--speed=(-s=) :run speed[ms]\n" << std::endl;
+	exit(1);
+}
+
 void bf2knk(std::wstring bf){
 	int index=0;
 

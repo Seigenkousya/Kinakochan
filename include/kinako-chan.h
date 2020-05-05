@@ -21,6 +21,7 @@ extern uint8_t *head;
 extern bool no_visualize;
 
 // code_check
+void invalid_argument();
 void bf2knk(std::wstring bf);
 std::wstring knk2bf(std::wstring kinako);
 void syntax_check(std::wstring& source);
