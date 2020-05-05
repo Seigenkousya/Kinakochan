@@ -22,7 +22,7 @@ int main(int argc,char *argv[]){
 			std::wcout << L"Usage: ./kinako-chan -(h|n|s) terget_file " << std::endl;
 			std::wcout << L"	--help(-h) :show this help" << std::endl;
 			std::wcout << L"	--no-visualize(-n) :only print result" << std::endl;
-			std::wcout << L"	--convert(-c) :convert brainfuck to kinako-chan " << std::endl;
+			std::wcout << L"	--convert(-c) (knk2bf|bf2knk):convert source code." << std::endl;
 			std::wcout << L"	--rev-convert(-r) :convert kinako-chan to brainfuck " << std::endl;
 			std::wcout << L"	--speed=(-s=) :run speed[ms]\n" << std::endl;
 			std::wcout << L"Auter:seigenkousya" << std::endl;
