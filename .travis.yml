@@ -12,7 +12,6 @@ jobs:
         homebrew:
           packages:
             - gcc@5
-          update: true
     - os: osx
       osx_image: xcode8
       env: 

@@ -25,8 +25,8 @@ int main(int argc,char *argv[]){
 			std::wcout << L"	--convert(-c) (knk2bf|bf2knk):convert source code." << std::endl;
 			std::wcout << L"	--rev-convert(-r) :convert kinako-chan to brainfuck " << std::endl;
 			std::wcout << L"	--speed=(-s=) :run speed[ms]\n" << std::endl;
-			std::wcout << L"Auter:seigenkousya" << std::endl;
-			std::wcout << L"Repository:https://github.com/seigenkousya/kinako-chan " << std::endl;
+			std::wcout << L"Auter: seigenkousya" << std::endl;
+			std::wcout << L"Repository: https://github.com/seigenkousya/kinako-chan " << std::endl;
 			return 0;
 		}else{
 			std::wcerr << L"argument error." << std::endl;
