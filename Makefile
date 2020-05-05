@@ -9,13 +9,13 @@ SOURCES  := $(wildcard ./src/*.cpp)
 OBJECTS  := $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cpp=.o)))
 
 $(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@[ -d $(OBJDIR) ]
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
 
-install: $(OBJECTS) $(LIBS)
+install: $(OBJECTS)
 	$(CXX) -O2 -o $@ $^ $(LDFLAGS)
 
 clean:

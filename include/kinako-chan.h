@@ -12,13 +12,13 @@
 
 #define MEMORY_SIZE 10000
 
-int x;
-int y;
-int row;
-int ms=20;
-int column;
-uint8_t *head;
-bool no_visualize=false;
+extern int x;
+extern int y;
+extern int ms;
+extern int row;
+extern int column;
+extern uint8_t *head;
+extern bool no_visualize;
 
 // code_check
 void bf2knk(std::wstring bf);

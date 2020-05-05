@@ -1,12 +1,20 @@
 #include "kinako-chan.h"
 
+int x;
+int y;
+int ms=20;
+int row;
+int column;
+uint8_t *head;
+bool no_visualize=false;
+
 int main(int argc,char *argv[]){
 	bool bfmode=false;
 	bool knktobf=false;
 	bool bftoknk=false;
 	char *filename;
 	std::locale::global(std::locale(""));
-	
+
 	if(argc==3){
 		filename=argv[2];
 		if(strcmp(argv[1],"--no-visualize")==0 || strcmp(argv[1],"-n")==0){
@@ -51,14 +59,14 @@ int main(int argc,char *argv[]){
 		exit(1);
 	}
 
-	//get window size
+	// get window size
 	struct winsize size;
 	ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
 
 	row=size.ws_row;
 	column=size.ws_col;
 
-	//read file
+	// read file
 	std::wifstream file(filename);
 
 	if(!file){
@@ -66,7 +74,7 @@ int main(int argc,char *argv[]){
 		std::exit(1);
 	}
 
-	//get stiring
+	// get stiring
 	std::wstringstream wss;
 	wss << file.rdbuf();
 	std::wstring source=wss.str();
