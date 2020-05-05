@@ -7,11 +7,7 @@ jobs:
       env:
         - CXX=g++-5
         - CXXFLAGS=-std=c++11
-      addons:
-        homebrew:
-          packages:
-            - gcc5
-          update: true
+        - MATRIX_EVAL="brew install gcc5"
     - os: osx
       osx_image: xcode8
       env: 
@@ -43,6 +39,9 @@ jobs:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise
             - llvm-toolchain-precise-3.8
+
+before_install:
+    - eval "${MATRIX_EVAL}"
 
 script:
     - uname -a
