@@ -3,12 +3,20 @@ language: cpp
 matrix:
     include:
         - os: osx
-            env: CXX=g++-5
+            osx_image: xcode9.4
+            env:
+                - CXX=g++-5
+                - CXXFLAGS=-std=c++11
         - os: osx
-            env: CXX=clang++
+            osx_image: xcode9.4
+            env: 
+                - CXX=clang++
+                - CXXFLAGS=-std=c++11
 
         - os: linux
-            env: CXX=g++-5
+            env:
+                - CXX=g++-5
+                - CXXFLAGS=-std=c++11
             addons:
                 apt:
                     packages:
@@ -19,7 +27,9 @@ matrix:
                         - llvm-toolchain-precise
                         - llvm-toolchain-precise-3.8
         - os: linux
-            env: CXX=clang++-3.8
+            env: 
+                - CXX=clang++-3.8
+                - CXXFLAGS=-std=c++11
             addons:
                 apt:
                     packages:
