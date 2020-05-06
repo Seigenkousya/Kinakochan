@@ -71,6 +71,9 @@ void processor(std::wstring bf,std::wstring kinako){
 
 		index++;
 
+		if(index==size-1)
+			std::system("clear");
+
 		if(!no_visualize)
 			usleep(ms);
 	}
