@@ -130,9 +130,8 @@ void display_array(uint8_t *memory,char *output){
 	y=2;
 
 	//std::system("clear");
-	std::wcout << L"\033c" << std::flush;
 	std::wcout << L"\033[2J" << std::flush;
-	fflush(stdout);
+	//fflush(stdout);
 
 	if(address==(index_start+box_num-1)){
 		index_start++;

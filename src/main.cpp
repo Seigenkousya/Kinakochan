@@ -2,7 +2,7 @@
 
 int x=2;
 int y=0;
-int ms=20;
+int ms=50;
 int row;
 int column;
 uint8_t *head;
