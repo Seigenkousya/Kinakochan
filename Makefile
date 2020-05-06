@@ -31,6 +31,6 @@ test2: kinako-chan
 	./kinako-chan -n example.knk
 
 test3: kinako-chan
-	./kinako-chan a.knk
+	./kinako-chan -s=10 example.knk
 
 .PHONY: test test1 test2 test3 clean install
