@@ -98,7 +98,7 @@ void display_bf(std::wstring code,int now,char *output){
 			}
 
 			if((index+1)%(column-33)==0 && counter+1 != flamesize){
-				std::wcout << std::flush;
+				//std::wcout << std::flush;
 				std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
 			}
 		}
