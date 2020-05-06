@@ -98,7 +98,7 @@ void display_bf(std::wstring code,int now,char *output){
 			}
 
 			if((index+1)%(column-33)==0 && counter+1 != flamesize){
-				std::wcout << std::endl;
+				std::wcout << std::flush;
 				std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
 			}
 		}
@@ -131,6 +131,8 @@ void display_array(uint8_t *memory,char *output){
 
 	//std::system("clear");
 	std::wcout << L"\033c" << std::flush;
+	std::wcout << L"\033[2J" << std::flush;
+	fflush(stdout);
 
 	if(address==(index_start+box_num-1)){
 		index_start++;
