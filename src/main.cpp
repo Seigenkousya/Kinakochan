@@ -13,7 +13,10 @@ int main(int argc,char *argv[]){
 	bool knktobf=false;
 	bool bftoknk=false;
 	char *filename;
-	std::locale::global(std::locale(""));
+	//std::locale::global(std::locale(""));
+	std::ios_base::sync_with_stdio(false);
+	std::locale::global(std::locale("")); 
+	std::wcout.imbue(std::locale(""));
 
 	// check argument
 	if(argc==2){
