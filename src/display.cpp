@@ -88,7 +88,7 @@ void display_bf(std::wstring code,int now,char *output){
 
 	index=start;
 	while(counter<flamesize){
-		if(is_token(code[index])){
+		if(index<code.size()){
 			if(index==now){
 				std::wcout << L"\033[46m" << std::flush;
 				std::wcout << code[index];
