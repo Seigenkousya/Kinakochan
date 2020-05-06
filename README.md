@@ -7,7 +7,7 @@
 kinako-chan is a programming language that can be programmed like momone-chan.
 ![](https://pbs.twimg.com/media/DOw0HQDVwAE92LD?format=jpg&name=medium)  
 
-# install
+# Install
 kinako-chan needs a g++ or clang.  
 See [Travis ci](https://travis-ci.com/github/Seigenkousya/kinako-chan) for details.
 
@@ -17,7 +17,7 @@ $ cd kinako-chan
 $ make install
 ```
 
-# usage
+# Usage
 ```terminal
 $ ./kinako-chan -(h|n|c|s=) terget_file  
 	--help(-h) :show help  
@@ -27,6 +27,14 @@ $ ./kinako-chan -(h|n|c|s=) terget_file
 ```
 
 ## example
+```terminal
+$ ./kinako-chan -n terget_file
+```
+kinako-chan defaults to Visualize mode.  
+Visualize mode show memory, datapointer, source, brainfuck code, and output.  
+
+![kinako-chan](https://user-images.githubusercontent.com/57716584/81172231-d3f55500-8fd8-11ea-8edc-8fa1ace18cc8.png)
+
 ```terminal
 $ ./kinako-chan -n terget_file
 ```
@@ -67,6 +75,37 @@ _kinako-chan is fully Turing complete._
 
 kinako-chan is a sequence of these commands, possibly interspersed with other characters (which are ignored).  
 The commands are executed sequentially, with some exceptions: an instruction pointer begins at the first command, and each command it points to is executed, after which it normally moves forward to the next command. The program terminates when the instruction pointer moves past the last command.   
+
+## hello world
+```
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈孑ちゃん
+黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黃奈子ちゃん黃奈子ちゃん黃奈子ちゃん黃奈子ちゃん黃奈子ちゃん
+黃奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん
+黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈孑ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黃奈子ちゃん
+黃奈子ちゃん黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黄奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん
+黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黃奈子ちゃん黄奈孑ちゃん
+黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん
+黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈子ちゃん
+黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん
+```
+
+# License
+The code is released under the MIT License.  
+See LICENSE.  
 
 # Author
 正弦工社 S.I.N  
