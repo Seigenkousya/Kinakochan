@@ -59,7 +59,7 @@ int main(int argc,char *argv[]){
 	}else{
 		std::wcerr << L"argument error." << std::endl;
 		std::wcerr << L"usage: ./kinako-chan kinako-chan_script" << std::endl;
-		exit(1);
+		std::exit(1);
 	}
 
 	// get window size
@@ -83,7 +83,6 @@ int main(int argc,char *argv[]){
 	std::wstring source=wss.str();
 
 	if(bftoknk){
-		std::wcout << L"bf to knk" << std::endl;
 		bf2knk(source);
 		return 0;
 	}

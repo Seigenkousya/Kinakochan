@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 
-#define MEMORY_SIZE 10000
+#define MEMORY_SIZE 30000
 
 extern int x;
 extern int y;

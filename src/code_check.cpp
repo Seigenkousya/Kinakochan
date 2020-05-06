@@ -8,7 +8,7 @@ void invalid_argument(){
 	std::wcout << L"	--convert(-c) :convert brainfuck to kinako-chan L" << std::endl;
 	std::wcout << L"	--rev-convert(-r) :convert kinako-chan to brainfuck L" << std::endl;
 	std::wcerr << L"	--speed=(-s=) :run speed[ms]\n" << std::endl;
-	exit(1);
+	std::exit(1);
 }
 
 void bf2knk(std::wstring bf){
