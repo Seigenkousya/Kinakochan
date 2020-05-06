@@ -25,12 +25,9 @@ test: kinako-chan
 	./kinako-chan -s=50 example.knk
 
 test1: kinako-chan
-	./kinako-chan -h
+	./kinako-chan ./test/a.knk
 
-test2: kinako-chan
-	./kinako-chan -n example.knk
+buildtest: kinako-chan
+	./testcase.sh
 
-test3: kinako-chan
-	./kinako-chan -s=10 example.knk
-
-.PHONY: test test1 test2 test3 clean install
+.PHONY: test test1 buildtest clean install

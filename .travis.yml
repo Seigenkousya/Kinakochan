@@ -52,6 +52,4 @@ script:
     - make -v 
     - g++ -v 
     - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" install
-    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test1
-    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test2
-    - make CXXFLAGS="${CXXFLAGS}" CXX="${CXX}" test3
+    - ./testcase.sh
