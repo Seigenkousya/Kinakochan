@@ -1,7 +1,7 @@
 # kinako-chan 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
  [![Build Status](https://travis-ci.com/Seigenkousya/kinako-chan.svg?branch=master)](https://travis-ci.com/Seigenkousya/kinako-chan)
- ![Version](https://img.shields.io/badge/version-1.0.3-orange)
+ ![Version](https://img.shields.io/badge/version-1.0.4-orange)
  ![S.I.N](https://img.shields.io/badge/S.I.N-%23003-00aaaa)  
 
 kinako-chan is a programming language that can be programmed like momone-chan.
