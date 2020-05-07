@@ -20,6 +20,7 @@ bool is_token(char c){
 
 void processor(std::wstring bf,std::wstring kinako){
 	char output[10000];
+	int nest=0;
 	int index=0;
 	int len_out=0;
 	int size=bf.size();
@@ -53,12 +54,24 @@ void processor(std::wstring bf,std::wstring kinako){
 				std::cin >> *memory;
 				break;
 			case '[':
-				if(*memory==0)
-					while(bf[index]!=']') index++;
+				nest=1;
+				if(*memory==0){
+					while(bf[index]!=']' || nest!=0){
+						index++;
+						if(bf[index]=='[') nest++;
+						if(bf[index]==']') nest--;
+					}
+				}
 				break;
 			case ']':
-				if(*memory!=0)
-					while(bf[index]!='[') index--;
+				nest=1;
+				if(*memory!=0){
+					while(bf[index]!='[' || nest!=0){
+						index--;
+						if(bf[index]=='[') nest--;
+						if(bf[index]==']') nest++;
+					}
+				}
 				break;
 		}
 		
