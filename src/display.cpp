@@ -155,7 +155,7 @@ void display_array(uint8_t *memory,char *output){
 
 	//std::system("clear");
 	std::wcout << L"\033[2J" << std::flush;
-	//fflush(stdout);
+	//std::wcout << L"\033c" << std::flush;
 
 	if(address==(index_start+box_num-1)){
 		index_start++;
