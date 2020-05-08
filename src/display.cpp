@@ -11,16 +11,30 @@ void create_flame(){
 	std::wcout << L"#" << std::endl;
 }
 
-void display_knk(std::wstring knk,int now){
+void display_knk(std::wstring knk,int now_word){
+	static int start=0;
+	static int line_start=1;
 	int index;
-	int line_number;
 	int counter=0;
+	int line_number;
+	int start_word=start/12;
 	int knk_xsize=(column-33)/(12*2);
 	int knk_ysize=row-14-2;
 	int flamesize=knk_xsize*knk_ysize;
-	static int start=0;
-	static int line_start=1;
 
+	//scroll jump up 
+	if((knk.size()/12)>flamesize && now_word<start_word){
+		start-=(knk_xsize)*12*((start_word-now_word)/knk_xsize+1);
+		line_start-=(start_word-now_word)/knk_xsize+1;
+	}
+
+	//scroll jump down 
+	if((knk.size()/12)>flamesize && (start_word+flamesize-1)<now_word){
+		start+=(knk_xsize)*12*((now_word-(start_word+flamesize-1))/knk_xsize+1);
+		line_start+=(now_word-(start_word+flamesize-1))/knk_xsize+1;
+	}
+
+	// set value
 	index=start;
 	line_number=line_start;
 
@@ -30,13 +44,13 @@ void display_knk(std::wstring knk,int now){
 	create_flame();
 
 	std::wcout << L"\033["<< ++x << L";" << y << L"H" << std::flush;
-	std::wcout << std::setw(2) << line_number << ": "<< std::flush;
+	std::wcout << std::setw(2) << line_number << ": " << std::flush;
 	std::wcout << L"\033["<< x << L";" << y+5 << L"H" << std::flush;
 	line_number++;
 
 	while(counter<flamesize){
 		if(index<knk.size()){
-			if(index == now*12){
+			if(index == now_word*12){
 				std::wcout << L"\033[42m" << std::flush;
 				std::wcout << knk.substr(index,12);
 				std::wcout << L"\033[49m" << std::flush;
@@ -63,15 +77,15 @@ void display_knk(std::wstring knk,int now){
 
 	create_flame();
 	
-	//scroll
-	if((knk.size()/12)>flamesize && now==(start/12)+flamesize-(knk_xsize*2)-1){
+	//scroll down
+	if((knk.size()/12)>flamesize && now_word==start_word+flamesize-(knk_xsize*2)-1){
 		start+=(knk_xsize)*12;
 		line_start++;
 	}
 
 }
 
-void display_bf(std::wstring code,int now,char *output){
+void display_bf(std::wstring code,int now_char,char *output){
 	int index;
 	int counter=0;
 	int bf_xsize=(column-33);
@@ -86,10 +100,20 @@ void display_bf(std::wstring code,int now,char *output){
 	create_flame();
 	std::wcout << L"\033["<< ++x << L";" << y+2 << L"H" << std::flush;
 
+	//scroll jump up 
+	if(now_char<start){
+		start-=bf_xsize*((start-now_char)/bf_xsize+1);
+	}
+
+	//scroll jump up 
+	if((start+flamesize-1)<now_char){
+		start+=bf_xsize*((now_char-(start+flamesize-1))/bf_xsize+1);
+	}
+
 	index=start;
 	while(counter<flamesize){
 		if(index<code.size()){
-			if(index==now){
+			if(index==now_char){
 				std::wcout << L"\033[46m" << std::flush;
 				std::wcout << code[index];
 				std::wcout << L"\033[49m" << std::flush;
@@ -113,7 +137,7 @@ void display_bf(std::wstring code,int now,char *output){
 	std::wcout << L"output: " << output << std::flush;
 
 	//scroll
-	if(now==start+flamesize-1){
+	if(now_char==start+flamesize-1){
 		start+=bf_xsize;
 	}
 }
