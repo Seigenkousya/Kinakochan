@@ -117,5 +117,28 @@ Takana Norimasa
 Twitter:[@lIlIIllIIIlIlIl](https://twitter.com/lIlIIllIIIlIlIl)  
 homepage:[https://takana-norimasa.github.io/blog/](https://takana-norimasa.github.io/blog/)  
 
+# Released
+## ver 1.0.0  
+kinako-chan released.  
+  
+## ver 1.0.1  
+Added command option.  
+Fixed page scroll function.  
+  
+## ver 1.0.2  
+Fixed terminal flush.  
+Added example.  
+  
+## ver 1.0.3  
+Fixed set locale.  
+kinako-chan now works on macOS.  
+  
+## ver 1.0.4  
+Fixed a bug about symbols '[' and ']'.  
+Added FizzBuzz to example.  
+  
+## ver 1.0.5  
+Fixed code display at jump.  
+
 # Thanks
-Utau Aizaki (HOUBUNSHA CO.LTD), どうして私が美術科に!?(Why did I enter the Art Course!?)
+Utau Aizaki (HOUBUNSHA CO.LTD), どうして私が美術科に!?(Why did I enter the Art Course!?)  
