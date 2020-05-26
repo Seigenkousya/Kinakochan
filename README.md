@@ -114,7 +114,7 @@ homepage:[https://seigenkousya.github.io/](https://seigenkousya.github.io/)
 
 ## maintainer
 Takana Norimasa  
-Twitter:[@lIlIIllIIIlIlIl](https://twitter.com/lIlIIllIIIlIlIl)  
+Twitter:[@303_See_0ther](https://twitter.com/303_See_0ther)  
 homepage:[https://takana-norimasa.github.io/blog/](https://takana-norimasa.github.io/blog/)  
 
 # Released
