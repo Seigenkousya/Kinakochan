@@ -112,11 +112,6 @@ See LICENSE.
 Twitter:[@Seigenkousya](https://twitter.com/Seigenkousya)    
 homepage:[https://seigenkousya.github.io/](https://seigenkousya.github.io/)  
 
-## maintainer
-Takana Norimasa  
-Twitter:[@303_See_0ther](https://twitter.com/303_See_0ther)  
-homepage:[https://takana-norimasa.github.io/blog/](https://takana-norimasa.github.io/blog/)  
-
 # Released
 ## ver 1.0.0  
 kinako-chan released.  
